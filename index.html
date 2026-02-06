@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json">
+  
   <title>Clock</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
 
   <style>
     html, body {
@@ -18,18 +22,18 @@
       align-items: center;
       justify-content: center;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      user-select: none;
     }
 
     #clock {
       font-size: 20vw;
       letter-spacing: 0.05em;
-      user-select: none;
     }
   </style>
 </head>
 
 <body>
-  <div id="clock"></div>
+  <div id="clock">--:--</div>
 
   <!-- CLOCK LOGIC -->
   <script>
@@ -44,11 +48,11 @@
     setInterval(updateClock, 1000);
   </script>
 
-  <!-- PWA SERVICE WORKER -->
+  <!-- SERVICE WORKER -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
+        navigator.serviceWorker.register('./service-worker.js');
       });
     }
   </script>
